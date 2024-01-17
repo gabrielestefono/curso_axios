@@ -4,18 +4,24 @@ const headersEl = document.getElementById('headers');
 const configEl = document.getElementById('config');
 
 const get = () => {
-    axios('https://jsonplaceholder.typicode.com/posts', {
+    const config = {
         params: {
             _limit: 5
-        }
-    })
-    .then((response) => {
-        renderOutput(response)
-    })
-    console.log('get');
+        },
+    };
+
+    axios('https://jsonplaceholder.typicode.com/posts', config)
+        .then((response) => renderOutput(response))
 }
 
 const post = () => {
+    const data = {
+        title: 'foo',
+        body: 'bar',
+        userId: 1
+    }
+    axios.post('https://jsonplaceholder.typicode.com/posts', data)
+        .then((response) => renderOutput(response))
     console.log('post');
 }
 
